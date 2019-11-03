@@ -14,8 +14,8 @@ npm i express express-handlebars
 npm run dev
 ```
 5. 開啟預覽連結
-若是在本機操作，於瀏覽器網址列輸入"http://localhost:3000"；
-若使用虛擬主機，則須配合主機服務設定另用網址
+- 若是在本機操作，於瀏覽器網址列輸入[http://localhost:3000](http://localhost:3000)；
+- 若使用虛擬主機，則須配合主機服務設定另用網址
 
 ## 主要功能：
 - 瀏覽現有資料中的餐廳清單(含名稱、類別、評分)
