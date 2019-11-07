@@ -1,4 +1,5 @@
-# Restaurant List (我的餐廳清單)
+# Restaurant List v1 (我的餐廳清單，第一版)
+
 ALPHA Camp 學期三作業1: 打造餐廳清單
 
 ## 如何使用：
