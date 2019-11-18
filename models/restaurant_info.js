@@ -2,6 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const restaurantInfoSchema = new Schema({
+//  id: {
+//    type: Number,
+//    required: true
+//  },
   name: {
     type: String,
     required: true
@@ -31,7 +35,7 @@ const restaurantInfoSchema = new Schema({
     required: true
   },
   rating: {
-    type: number,
+    type: Number,
     required: true
   },
   description: {

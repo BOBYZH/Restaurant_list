@@ -3,9 +3,9 @@ const app = express()
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 
-//const restaurantList = require('./restaurant.json')
+const restaurantList = require('./restaurant.json')
 
-mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 
