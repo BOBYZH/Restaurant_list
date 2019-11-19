@@ -37,9 +37,11 @@ app.get('/restaurants/new', (req, res) => {
   return res.render('new')
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurantInfo = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant: restaurantInfo })
+app.get('/restaurants/:id', (req, res) => {
+  RestaurantInfo.findById(req.params.id, (err, restaurantinfo)=> {
+    if (err) return console.error(err)
+    return res.render('show', {restaurantinfo} )
+  })
 })
 
 app.post('/restaurants', (req, res) => {
