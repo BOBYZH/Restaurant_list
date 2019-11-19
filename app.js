@@ -20,6 +20,8 @@ const RestaurantInfo = require('./models/restaurant_info')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+app.use(express.urlencoded({ extended: true }))
+
 app.get('/', (req, res) => {
   RestaurantInfo.find((err, restaurantinfos) => {
     if (err) return console.error(err)
@@ -32,7 +34,7 @@ app.get('/restaurants', (req, res) => {
 })
 
 app.get('/restaurants/new', (req, res) => {
-  res.send('Show page of creating a restaurant info')
+  return res.render('new')
 })
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
@@ -41,7 +43,22 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 })
 
 app.post('/restaurants', (req, res) => {
-  res.send('Create a restaurant info')
+  const restaurantinfo = new RestaurantInfo({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description,
+  })
+  
+  restaurantinfo.save(err => {
+    if (err) return console.error(err)
+    return res.redirect('/')
+  })
 })
 
 app.get('/restaurants/:restaurant_id/edit', (req, res) => {
