@@ -90,7 +90,13 @@ app.post('/restaurants/:id/edit', (req, res) => {
 })
 
 app.post('/restaurants/:id/delete', (req, res) => {
-  res.send('Delete a restaurant info')
+  RestaurantInfo.findById(req.params.id, (err, restaurantinfo)=> {
+    if (err) return console.error(err)
+    restaurantinfo.remove(err => {
+      if (err) return console.error(err)
+      return res.redirect('/')
+    })
+  })
 })
 
 
