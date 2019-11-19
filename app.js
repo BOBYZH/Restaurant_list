@@ -3,8 +3,6 @@ const app = express()
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 
-const restaurantList = require('./restaurant.json')
-
 mongoose.connect('mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
@@ -23,11 +21,14 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  RestaurantInfo.find((err, restaurantinfos) => {
+    if (err) return console.error(err)
+    return res.render('index', {restaurantinfos})
+  })
 })
 
 app.get('/restaurants', (req, res) => {
-  res.send('List all restaurant infos')
+  return res.redirect('/')
 })
 
 app.get('/restaurants/new', (req, res) => {
@@ -57,7 +58,6 @@ app.post('/restaurants/:restaurant_id/delete', (req, res) => {
 
 
 app.get('/search', (req, res) => {
-
   const keyword = req.query.keyword
   const restaurants = restaurantList.results.filter(restaurant => {
     return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
