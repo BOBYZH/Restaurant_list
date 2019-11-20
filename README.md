@@ -12,7 +12,7 @@
 ```
 npm i express express-handlebars mongoose
 ```
-5. 切換至"./models/seeds，"執行"node restaurantInfoSeeder.js"，建立資料庫與範例資料
+5. 切換至"./models/seeds，執行"node restaurantInfoSeeder.js"，建立資料庫與範例資料
 6. 執行本專案：
 ```
 npm run dev
