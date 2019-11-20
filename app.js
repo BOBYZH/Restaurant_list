@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }))
 app.get('/', (req, res) => {
   RestaurantInfo.find((err, restaurantinfos) => {
     if (err) return console.error(err)
-    return res.render('index', {restaurantinfos})
+    return res.render('index', { restaurantinfos })
   })
 })
 
@@ -38,9 +38,9 @@ app.get('/restaurants/new', (req, res) => {
 })
 
 app.get('/restaurants/:id', (req, res) => {
-  RestaurantInfo.findById(req.params.id, (err, restaurantinfo)=> {
+  RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
     if (err) return console.error(err)
-    return res.render('show', {restaurantinfo} )
+    return res.render('show', { restaurantinfo })
   })
 })
 
@@ -54,9 +54,9 @@ app.post('/restaurants', (req, res) => {
     phone: req.body.phone,
     google_map: req.body.google_map,
     rating: req.body.rating,
-    description: req.body.description,
+    description: req.body.description
   })
-  
+
   restaurantinfo.save(err => {
     if (err) return console.error(err)
     return res.redirect('/')
@@ -64,33 +64,33 @@ app.post('/restaurants', (req, res) => {
 })
 
 app.get('/restaurants/:id/edit', (req, res) => {
-  RestaurantInfo.findById(req.params.id, (err, restaurantinfo)=> {
+  RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
     if (err) return console.error(err)
-    return res.render('edit', {restaurantinfo} )
+    return res.render('edit', { restaurantinfo })
   })
 })
 
 app.post('/restaurants/:id/edit', (req, res) => {
-   RestaurantInfo.findById(req.params.id, (err, restaurantinfo)=> {
-        if (err) return console.error(err)
-      restaurantinfo.name = req.body.name
-      restaurantinfo.name_en = req.body.name_en
-      restaurantinfo.category = req.body.category
-      restaurantinfo.image = req.body.image
-      restaurantinfo.location = req.body.location
-      restaurantinfo.phone = req.body.phone
-      restaurantinfo.google_map = req.body.google_map
-      restaurantinfo.rating = req.body.rating
-      restaurantinfo.description = req.body.description
-      restaurantinfo.save(err => {
-        if (err) return console.error(err)
-        return res.redirect(`/restaurants/${req.params.id}`)
-       })
+  RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
+    if (err) return console.error(err)
+    restaurantinfo.name = req.body.name
+    restaurantinfo.name_en = req.body.name_en
+    restaurantinfo.category = req.body.category
+    restaurantinfo.image = req.body.image
+    restaurantinfo.location = req.body.location
+    restaurantinfo.phone = req.body.phone
+    restaurantinfo.google_map = req.body.google_map
+    restaurantinfo.rating = req.body.rating
+    restaurantinfo.description = req.body.description
+    restaurantinfo.save(err => {
+      if (err) return console.error(err)
+      return res.redirect(`/restaurants/${req.params.id}`)
+    })
   })
 })
 
 app.post('/restaurants/:id/delete', (req, res) => {
-  RestaurantInfo.findById(req.params.id, (err, restaurantinfo)=> {
+  RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
     if (err) return console.error(err)
     restaurantinfo.remove(err => {
       if (err) return console.error(err)
@@ -99,17 +99,16 @@ app.post('/restaurants/:id/delete', (req, res) => {
   })
 })
 
-
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const restaurants = restaurantList.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+  RestaurantInfo.find({ name: new RegExp(keyword) }, (err, restaurantinfos) => {
+    if (err) return console.error(err)
+    res.render('index', { restaurantinfos, keyword })
   })
-  res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 
 app.use(express.static('public'))
 
 app.listen(3000, () => {
-  console.log(`Express app is listening!`)
+  console.log('Express app is listening!')
 })

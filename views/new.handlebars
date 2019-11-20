@@ -1,12 +1,11 @@
 <form action="/restaurants" method="POST" class="row mx-auto p-2">
-  <h5 class="mb-1 restaurant-show-title">餐廳資訊</h5>
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-10 mx-auto py-3">
+        <div class="col-12 mx-auto py-3">
     
           <p class="mb-1">
             <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
+              <i class="fas fa-store"></i>
               餐廳名稱：
             </span>
             <input type="text" placeholder="店名" name="name" required>
@@ -14,7 +13,7 @@
           
           <p class="mb-1">
             <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
+              <i class="fas fa-store-alt"></i>
               英文店名：
             </span>
             <input type="text" placeholder="name" name="name_en" required>
@@ -30,7 +29,7 @@
           
           <p class="mb-1">
             <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
+              <i class="fas fa-images"></i>
               照片連結：
             </span>
             <input type="text" placeholder="圖片檔案網址" name="image" required>
@@ -38,7 +37,7 @@
     
           <p class="mb-1">
             <span class="text-secondary">
-              <i class="fas fa-map-marker-alt pr-2"></i>
+              <i class="fas fa-location-arrow"></i>
               店面地址：
             </span>
             <input type="text" placeholder="縣市、門牌號碼(樓層)" name="location" required>
@@ -46,7 +45,7 @@
     
           <p class="mb-1">
             <span class="text-secondary">
-              <i class="fas fa-mobile-alt pr-2"></i>
+              <i class="fas fa-phone"></i>
               聯絡電話：
             </span>
             <input type="text" placeholder="市話或手機皆可" name="phone" required>
@@ -54,7 +53,7 @@
           
            <p class="mb-1">
             <span class="text-secondary">
-              <i class="fas fa-map-marker-alt pr-2"></i>
+              <i class="fas fa-map-marked-alt"></i>
               地圖連結：
             </span>
             <input type="text" placeholder="Google地圖頁面網址" name="google_map" required>
@@ -62,7 +61,7 @@
           
           <p class="mb-1">
             <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
+              <i class="fas fa-star-half-alt"></i>
               餐後評分：
             </span>
             <input type="number" placeholder="1位小數" step="0.1" min="0" max="5" name="rating" required>
@@ -70,14 +69,14 @@
           
            
             <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
+              <i class="fas fa-info"></i>
               店面簡介：
             </span>
           <p class="mb-1">
             <textarea type="text" placeholder="餐廳特色說明" name="description" class="w-75"></textarea required>
           </p>
           
-          <button type="submit">新增店家</button>
+          <button type="submit" class="btn btn-info">新增店家</button>
           
         </div>
       </div>

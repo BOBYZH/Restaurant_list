@@ -1,4 +1,4 @@
-<h1 class="mb-1 restaurantinfo-show-title mx-auto w-50 py-2">{{restaurantinfo.name}}</h1>
+<h2 class="mb-1 restaurantinfo-show-title mx-auto w-75 py-3">{{restaurantinfo.name}}</h2>
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
@@ -41,7 +41,7 @@
           <a href="/restaurants/{{{restaurantinfo.id}}}/edit" class="btn border mb-1">編輯</a>
           <a href="/" class="btn border mb-1">返回</a>
           <form action="/restaurants/{{{restaurantinfo.id}}}/delete" method="POST" style="display: inline;">
-            <button type="submit" class="border p-2 m-1">刪除</button>
+            <button type="submit" class="border p-2 m-1" onclick="if(confirm('確定刪除？')) return true; else return false">刪除</button>
           </form>
         </div>
     </div>

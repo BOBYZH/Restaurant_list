@@ -1,85 +1,84 @@
 <form action="/restaurants/{{{restaurantinfo.id}}}/edit" method="POST" class="row mx-auto p-2">
-  <h5 class="mb-1 restaurant-show-title">餐廳資訊</h5>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-10 mx-auto py-3">
-    
-          <p class="mb-1">
-            <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
-              餐廳名稱：
-            </span>
-            <input type="text" placeholder="店名" name="name" required value="{{{restaurantinfo.name}}}">
-          </p>
-          
-          <p class="mb-1">
-            <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
-              英文店名：
-            </span>
-            <input type="text" placeholder="name" name="name_en" required value="{{{restaurantinfo.name_en}}}">
-          </p>
-          
-          <p class="mb-1">
-            <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
-              餐飲類別：
-            </span>
-            <input type="text" placeholder="餐廳飲食種類" name="category" required value="{{{restaurantinfo.category}}}">
-          </p>
-          
-          <p class="mb-1">
-            <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
-              照片連結：
-            </span>
-            <input type="text" placeholder="圖片檔案網址" name="image" required value="{{{restaurantinfo.image}}}">
-          </p>
-    
-          <p class="mb-1">
-            <span class="text-secondary">
-              <i class="fas fa-map-marker-alt pr-2"></i>
-              店面地址：
-            </span>
-            <input type="text" placeholder="縣市、門牌號碼(樓層)" name="location" required value="{{{restaurantinfo.location}}}">
-          </p>
-    
-          <p class="mb-1">
-            <span class="text-secondary">
-              <i class="fas fa-mobile-alt pr-2"></i>
-              聯絡電話：
-            </span>
-            <input type="text" placeholder="市話或手機皆可" name="phone" required value="{{{restaurantinfo.phone}}}">
-          </p>
-          
-           <p class="mb-1">
-            <span class="text-secondary">
-              <i class="fas fa-map-marker-alt pr-2"></i>
-              地圖連結：
-            </span>
-            <input type="text" placeholder="Google地圖頁面網址" name="google_map" required value="{{{restaurantinfo.google_map}}}">
-          </p>
-          
-          <p class="mb-1">
-            <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
-              餐後評分：
-            </span>
-            <input type="number" placeholder="1位小數0~5" step="0.1" min="0" max="5" name="rating" required value="{{{restaurantinfo.rating}}}">
-          </p>
-          
-           
-            <span class="text-secondary">
-              <i class="fas fa-utensils pr-2"></i>
-              店面簡介：
-            </span>
-          <p class="mb-1">
-            <textarea type="text" placeholder="餐廳特色說明" name="description" class="w-75" required>{{{restaurantinfo.description}}}</textarea>
-          </p>
-          
-          <button type="submit">確認修改</button>
-          
+  <div class="container">
+        <div class="row">
+          <div class="col-12 mx-auto py-3">
+      
+            <p class="mb-1">
+              <span class="text-secondary">
+                <i class="fas fa-store"></i>
+                餐廳名稱：
+              </span>
+              <input type="text" placeholder="店名" name="name" required value="{{{restaurantinfo.name}}}">
+            </p>
+            
+            <p class="mb-1">
+              <span class="text-secondary">
+                <i class="fas fa-store-alt"></i>
+                英文店名：
+              </span>
+              <input type="text" placeholder="name" name="name_en" required value="{{{restaurantinfo.name_en}}}">
+            </p>
+            
+            <p class="mb-1">
+              <span class="text-secondary">
+                <i class="fas fa-utensils pr-2"></i>
+                餐飲類別：
+              </span>
+              <input type="text" placeholder="餐廳飲食種類" name="category" required value="{{{restaurantinfo.category}}}">
+            </p>
+            
+            <p class="mb-1">
+              <span class="text-secondary">
+                <i class="fas fa-images"></i>
+                照片連結：
+              </span>
+              <input type="text" placeholder="圖片檔案網址" name="image" required value="{{{restaurantinfo.image}}}">
+            </p>
+      
+            <p class="mb-1">
+              <span class="text-secondary">
+                <i class="fas fa-location-arrow"></i>
+                店面地址：
+              </span>
+              <input type="text" placeholder="縣市、門牌號碼(樓層)" name="location" required value="{{{restaurantinfo.location}}}">
+            </p>
+      
+            <p class="mb-1">
+              <span class="text-secondary">
+                <i class="fas fa-phone"></i>
+                聯絡電話：
+              </span>
+              <input type="text" placeholder="市話或手機皆可" name="phone" required value="{{{restaurantinfo.phone}}}">
+            </p>
+            
+             <p class="mb-1">
+              <span class="text-secondary">
+                <i class="fas fa-map-marked-alt"></i>
+                地圖連結：
+              </span>
+              <input type="text" placeholder="Google地圖頁面網址" name="google_map" required value="{{{restaurantinfo.google_map}}}">
+            </p>
+            
+            <p class="mb-1">
+              <span class="text-secondary">
+                <i class="fas fa-star-half-alt"></i>
+                餐後評分：
+              </span>
+              <input type="number" placeholder="1位小數0~5" step="0.1" min="0" max="5" name="rating" required value="{{{restaurantinfo.rating}}}">
+            </p>
+            
+             
+              <span class="text-secondary">
+                <i class="fas fa-info"></i>
+                店面簡介：
+              </span>
+            <p class="mb-1">
+              <textarea type="text" placeholder="餐廳特色說明" name="description" class="w-75" required>{{{restaurantinfo.description}}}</textarea>
+            </p>
+            
+            <button type="submit" class="btn btn-info">確認修改</button>
+            
+          </div>
         </div>
       </div>
-    </div>
 </form>
