@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const RestaurantInfo = require('../models/restaurant_info')
 
-
 router.get('/', (req, res) => {
   return res.redirect('/')
 })

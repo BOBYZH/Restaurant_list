@@ -1,7 +1,7 @@
-# Restaurant List v2 (我的餐廳清單，第二版)
+# Restaurant List v3 (我的餐廳清單，第三版)
 
 ### ALPHA Camp 學期三作業
-(打造餐廳清單 => 建立餐廳清單的 CRUD)
+(打造餐廳清單 => 建立餐廳清單的 CRUD => 重構餐廳清單)
 
 ## 如何使用：
 0. 至少先在電腦上裝好Node.js
@@ -10,7 +10,7 @@
 3. 使用終端機(terminal)，將目錄切換至專案資料夾(restaurant_list)
 4. 使用npm安裝需要的套件：
 ```
-npm i express express-handlebars mongoose
+npm i express express-handlebars mongoose method-override
 ```
 5. 切換至"./models/seeds"，執行"node restaurantInfoSeeder.js"，建立資料庫與範例資料
 6. 執行本專案：
@@ -27,6 +27,11 @@ npm run dev
 - 輸入餐廳關鍵字來搜尋(目前僅支援餐廳名稱片段)
 
 ### 版本更新：
+#### 第二版
 - 資料儲存方式由json改為mongoDB，支援完整的CRUD操作，可新增、顯示、更新、刪除餐廳資料
 - 刪除資料前會出現提示，避免誤刪
 - 微調UI(使用者介面)
+#### 第三版
+- 增加依名稱遞增/減、類別、位置排序的選單功能
+- 路由依RESTful設計與功能分類，重構動作指令與檔案獨立，便於未來維護
+
