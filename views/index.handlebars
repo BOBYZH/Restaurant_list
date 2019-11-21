@@ -2,27 +2,39 @@
 <div class="container mt-5">
 
   <!-- search bar -->
-  <div class="container search-bar" id="search-bar">
-    <div class="search-bar-outer">
+  <div class="container search-bar row justify-content-between" id="search-bar">
+  
+    <div class="search-bar-outer col-md-5 col-sm-12 mt-1">
       <div class="search-bar-inner">
         <form action="/search">
           <h4 class="mb-2">尋找餐廳：</h4>
           <div class="input-group">
-            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱" aria-label="Restaurant Name..."
-              value="{{keyword}}" aria-describedby="search-button">
             <div class="input-group-append">
               <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
             </div>
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱" aria-label="Restaurant Name..."
+              value="{{keyword}}" aria-describedby="search-button">
           </div>
         </form>
       </div>
     </div>
-  </div>
-
+    
+    <div class="col-md-6 col-sm-12" style="margin-top: 60px;">
+      <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
+        <option selected>排列順序</option>
+        <option value="/sort/ascending">遞增</option>
+        <option value="/sort/descending">遞減</option>
+        <option value="/sort/category">類別</option>
+        <option value="/sort/location">地區</option>
+      </select>
+    </div>
+    
+  </div>  
+ 
   <!-- restaurant list -->
   <div class="container mt-5">
     <div class="row" id="data-panel">
-      <div class="col-12 mx-auto">
+      <div class="mx-auto">
         <div class="card-columns">
           {{!-- loop  --}}
           {{#each restaurantinfos}}
@@ -44,9 +56,9 @@
               </div>
               <div class="float-right ml-3">
                 <a href="/restaurants/{{{this.id}}}/edit" class="btn border">編輯</a>
-                <a href="/restaurants/{{{this.id}}}" class="btn border">檢視</a>
+                <a href="/restaurants/{{{this.id}}}" class="btn btn-info border">檢視</a>
                 <form action="/restaurants/{{{this.id}}}/delete" method="POST" style="display: inline;">
-                  <button type="submit" class="border p-2 m-1" onclick="if(confirm('確定刪除？')) return true; else return false">刪除</button>
+                  <button type="submit" class="border btn btn-danger" onclick="if(confirm('確定刪除？')) return true; else return false">刪除</button>
                 </form>
               </div>
             </div>

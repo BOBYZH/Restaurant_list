@@ -107,6 +107,42 @@ app.get('/search', (req, res) => {
   })
 })
 
+app.get('/sort/ascending', (req, res) => {
+  RestaurantInfo.find({})
+  .sort({name: 'asc'})
+    .exec((err, restaurantinfos) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurantinfos })
+  })
+})
+
+app.get('/sort/descending', (req, res) => {
+  RestaurantInfo.find({})
+  .sort({name: 'desc'})
+    .exec((err, restaurantinfos) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurantinfos })
+  })
+})
+
+app.get('/sort/category', (req, res) => {
+  RestaurantInfo.find({})
+  .sort({category: 'asc'})
+    .exec((err, restaurantinfos) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurantinfos })
+  })
+})
+
+app.get('/sort/location', (req, res) => {
+  RestaurantInfo.find({})
+  .sort({location: 'asc'})
+    .exec((err, restaurantinfos) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurantinfos })
+  })
+})
+
 app.use(express.static('public'))
 
 app.listen(3000, () => {
