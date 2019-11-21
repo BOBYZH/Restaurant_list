@@ -40,7 +40,7 @@
         <div class="float-right">
           <a href="/restaurants/{{{restaurantinfo.id}}}/edit" class="btn border mb-1">編輯</a>
           <a href="/" class="btn border mb-1">返回</a>
-          <form action="/restaurants/{{{restaurantinfo.id}}}/delete" method="POST" style="display: inline;">
+          <form action="/restaurants/{{{restaurantinfo.id}}}/delete_method=DELETE" method="POST" style="display: inline;">
             <button type="submit" class="border p-2 m-1" onclick="if(confirm('確定刪除？')) return true; else return false">刪除</button>
           </form>
         </div>

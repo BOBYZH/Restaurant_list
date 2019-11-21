@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
 
 mongoose.connect('mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -21,6 +22,8 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(express.urlencoded({ extended: true }))
+
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   RestaurantInfo.find((err, restaurantinfos) => {
@@ -70,7 +73,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
   })
 })
 
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id/', (req, res) => {
   RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
     if (err) return console.error(err)
     restaurantinfo.name = req.body.name
@@ -89,7 +92,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
   })
 })
 
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id/delete', (req, res) => {
   RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
     if (err) return console.error(err)
     restaurantinfo.remove(err => {
