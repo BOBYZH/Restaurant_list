@@ -21,11 +21,13 @@
     
     <div class="col-md-6 col-sm-12" style="margin-top: 60px;">
       <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
-        <option selected>排列順序</option>
-        <option value="/sort/ascending">遞增</option>
-        <option value="/sort/descending">遞減</option>
-        <option value="/sort/category">類別</option>
-        <option value="/sort/location">地區</option>
+        <option selected>排列順序(依左至右)</option>
+        <option value="/sort/name?order=asc">依店名字母順序/筆畫遞增</option>
+        <option value="/sort/name?order=desc">依店名字母順序/筆畫遞減</option>
+        <option value="/sort/category?order=asc">依類別字母順序/筆畫遞增</option>
+        <option value="/sort/category?order=desc">依類別字母順序/筆畫遞減</option>
+        <option value="/sort/location?order=asc">依地區字母順序/筆畫遞增</option>
+        <option value="/sort/location?order=desc">依地區字母順序/筆畫遞減</option>
       </select>
     </div>
     
