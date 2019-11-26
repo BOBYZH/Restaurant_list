@@ -28,6 +28,7 @@ app.use(methodOverride('_method'))
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurants'))
 app.use('/sort', require('./routes/sort'))
+app.use('/users', require('./routes/user'))
 
 app.use(express.static('public'))
 
