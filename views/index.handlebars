@@ -1,9 +1,7 @@
-<!-- ./views/index.handlebars -->
-<div class="container mt-5">
+<div class="container mt-3">
 
-  <!-- search bar -->
-  <div class="container search-bar row justify-content-between" id="search-bar">
-  
+  <div class="container search-bar row justify-content-between" id="search-bar">   
+    
     <div class="search-bar-outer col-md-5 col-sm-12 mt-1">
       <div class="search-bar-inner">
         <form action="/search">
@@ -19,7 +17,7 @@
       </div>
     </div>
     
-    <div class="col-md-6 col-sm-12" style="margin-top: 60px;">
+    <div class="col-md-6 col-sm-12 mt-4" >
       <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
         <option selected>排列順序(依左至右)</option>
         <option value="/sort/name?order=asc">依店名字母順序/筆畫遞增</option>
@@ -40,10 +38,15 @@
       <!-- </select>-->
     </div>
     
+    <div class="col-md-6 col-sm-12 mt-4">
+      <a href="/restaurants/" class="btn btn-primary rounded p-2">回到預設排序</a>
+      <a href="/restaurants/new" class="btn btn-success rounded p-2 float-right">新增店家</a>
+    </div> 
+    
   </div>  
  
   <!-- restaurant list -->
-  <div class="container mt-5">
+  <div class="container mt-2">
     <div class="row" id="data-panel">
       <div class="mx-auto">
         <div class="card-columns">
