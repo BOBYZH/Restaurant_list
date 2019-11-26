@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
+const session = require('express-session')
 
 mongoose.connect('mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -24,6 +25,12 @@ app.set('view engine', 'handlebars')
 app.use(express.urlencoded({ extended: true }))
 
 app.use(methodOverride('_method'))
+
+app.use(session({
+  secret: 'my secret key',
+  resave: false,
+  saveUninitialized: true,
+}))
 
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurants'))
