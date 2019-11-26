@@ -5,7 +5,7 @@ const RestaurantInfo = require('../models/restaurant_info')
 const { authenticated } = require('../config/auth')
 
 router.get('/', authenticated, (req, res) => {
-  RestaurantInfo.find((err, restaurantinfos) => {
+  RestaurantInfo.find({ userId: req.user._id },(err, restaurantinfos) => {
     if (err) return console.error(err)
     return res.render('index', { restaurantinfos })
   })

@@ -13,7 +13,7 @@ router.get('/new', authenticated, (req, res) => {
 })
 
 router.get('/:id', authenticated, (req, res) => {
-  RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
+  RestaurantInfo.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurantinfo) => {
     if (err) return console.error(err)
     return res.render('show', { restaurantinfo })
   })
@@ -29,7 +29,8 @@ router.post('/', authenticated, (req, res) => {
     phone: req.body.phone,
     google_map: req.body.google_map,
     rating: req.body.rating,
-    description: req.body.description
+    description: req.body.description,
+    userId: req.user._id  
   })
 
   restaurantinfo.save(err => {
@@ -39,14 +40,14 @@ router.post('/', authenticated, (req, res) => {
 })
 
 router.get('/:id/edit', authenticated, (req, res) => {
-  RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
+  RestaurantInfo.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurantinfo) => {
     if (err) return console.error(err)
     return res.render('edit', { restaurantinfo })
   })
 })
 
 router.put('/:id/', authenticated, (req, res) => {
-  RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
+  RestaurantInfo.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurantinfo) => {
     if (err) return console.error(err)
     restaurantinfo.name = req.body.name
     restaurantinfo.name_en = req.body.name_en
@@ -65,7 +66,7 @@ router.put('/:id/', authenticated, (req, res) => {
 })
 
 router.delete('/:id/delete', authenticated, (req, res) => {
-  RestaurantInfo.findById(req.params.id, (err, restaurantinfo) => {
+  RestaurantInfo.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurantinfo) => {
     if (err) return console.error(err)
     restaurantinfo.remove(err => {
       if (err) return console.error(err)
