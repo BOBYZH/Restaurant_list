@@ -1,4 +1,8 @@
 const express = require('express')
+if (process.env.NODE_ENV !== 'production') {      
+  require('dotenv').config()         
+}
+
 const app = express()
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
@@ -48,6 +52,7 @@ app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurants'))
 app.use('/sort', require('./routes/sort'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/auths'))
 
 app.use(express.static('public'))
 
