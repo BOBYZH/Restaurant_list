@@ -1,6 +1,6 @@
 const express = require('express')
-if (process.env.NODE_ENV !== 'production') {      
-  require('dotenv').config()         
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
 }
 
 const app = express()
@@ -9,9 +9,9 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
-const flash = require('connect-flash')     
+const flash = require('connect-flash')
 
-mongoose.connect('mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true,  useCreateIndex: true })
+mongoose.connect('mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 const db = mongoose.connection
 
@@ -35,7 +35,7 @@ app.use(methodOverride('_method'))
 app.use(session({
   secret: 'my secret key',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: true
 }))
 
 app.use(passport.initialize())
@@ -43,17 +43,16 @@ app.use(passport.session())
 
 require('./config/passport')(passport)
 
-app.use(flash())  
+app.use(flash())
 
 app.use((req, res, next) => {
   res.locals.user = req.user
-  res.locals.isAuthenticated = req.isAuthenticated() 
-  
+  res.locals.isAuthenticated = req.isAuthenticated()
+
   res.locals.success_msg = req.flash('success_msg')
   res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
-
 
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurants'))

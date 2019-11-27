@@ -30,7 +30,7 @@ router.post('/', authenticated, (req, res) => {
     google_map: req.body.google_map,
     rating: req.body.rating,
     description: req.body.description,
-    userId: req.user._id  
+    userId: req.user._id
   })
 
   restaurantinfo.save(err => {

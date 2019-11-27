@@ -37,10 +37,10 @@ const RestaurantInfo = require('../models/restaurant_info')
 //      return res.render('index', { restaurantinfos })
 //    })
 // })
-// 
+//
 router.get('/name', (req, res) => {
   const order = req.query.order
-  const sortObject = { name: order}
+  const sortObject = { name: order }
   RestaurantInfo.find({})
     .sort(sortObject)
     .exec((err, restaurantinfos) => {
@@ -51,7 +51,7 @@ router.get('/name', (req, res) => {
 
 router.get('/category', (req, res) => {
   const order = req.query.order
-  const sortObject = { category: order}
+  const sortObject = { category: order }
   RestaurantInfo.find()
     .sort(sortObject)
     .exec((err, restaurantinfos) => {
@@ -62,7 +62,7 @@ router.get('/category', (req, res) => {
 
 router.get('/location', (req, res) => {
   const order = (req.query.order).toString()
-  const sortObject = { location: order}
+  const sortObject = { location: order }
   RestaurantInfo.find()
     .sort(sortObject)
     .exec((err, restaurantinfos) => {
@@ -71,7 +71,7 @@ router.get('/location', (req, res) => {
     })
 })
 
-//router.get('/', (req, res) => {
+// router.get('/', (req, res) => {
 //  let sortObject ={}
 //  let filter = req.query.filter
 //  const order = req.query.order
@@ -90,6 +90,6 @@ router.get('/location', (req, res) => {
 //      if (err) return res.sendStatus(500)
 //      return res.render('index', { restaurantinfos })
 //    })
-//})
+// })
 
 module.exports = router

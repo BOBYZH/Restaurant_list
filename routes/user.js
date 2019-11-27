@@ -1,16 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const passport = require('passport') 
+const passport = require('passport')
 const bcrypt = require('bcryptjs')
 
-const User = require('../models/user')  
+const User = require('../models/user')
 
 router.get('/login', (req, res) => {
   res.render('login')
 })
 
 router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {                  
+  passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/users/login'
   })(req, res, next)
@@ -22,8 +22,8 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, password2 } = req.body
-  
-  let errors = []
+
+  const errors = []
 
   if (!name || !email || !password || !password2) {
     errors.push({ message: '所有欄位都是必填' })
@@ -41,34 +41,34 @@ router.post('/register', (req, res) => {
       password,
       password2
     })
-  } else {  
-   User.findOne({ email: email }).then(user => {
-    if (user) {
-      console.log('User already exists')
-      res.render('register', {
-        name,
-        email,
-        password,
-        password2
-      })
-    } else {
-      const newUser = new User({
-        name,
-        email,
-        password
-      })
-      
-      bcrypt.genSalt(10, (err, salt) =>
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err
-          newUser.password = hash
-      
-          newUser
-            .save()
-            .then(user => {
-              res.redirect('/')                         // 新增完成導回首頁
-            })
-            .catch(err => console.log(err))      
+  } else {
+    User.findOne({ email: email }).then(user => {
+      if (user) {
+        console.log('User already exists')
+        res.render('register', {
+          name,
+          email,
+          password,
+          password2
+        })
+      } else {
+        const newUser = new User({
+          name,
+          email,
+          password
+        })
+
+        bcrypt.genSalt(10, (err, salt) =>
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err
+            newUser.password = hash
+
+            newUser
+              .save()
+              .then(user => {
+                res.redirect('/') // 新增完成導回首頁
+              })
+              .catch(err => console.log(err))
           })
         )
       }

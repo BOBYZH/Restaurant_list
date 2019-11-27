@@ -1,7 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs') 
+const bcrypt = require('bcryptjs')
 
 const User = require('../models/user')
 module.exports = passport => {
@@ -13,7 +13,7 @@ module.exports = passport => {
         if (!user) {
           return done(null, false, { message: 'That email is not registered' })
         }
-        
+
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err
           if (isMatch) {
@@ -25,7 +25,7 @@ module.exports = passport => {
       })
     })
   )
-  
+
   passport.use(
     new FacebookStrategy({
       clientID: process.env.FACEBOOK_ID,
@@ -59,9 +59,9 @@ module.exports = passport => {
       })
     })
   )
-  
+
   passport.serializeUser((user, done) => {
-      done(null, user.id)
+    done(null, user.id)
   })
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
