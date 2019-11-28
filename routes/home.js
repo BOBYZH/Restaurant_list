@@ -13,7 +13,7 @@ router.get('/', authenticated, (req, res) => {
 
 router.get('/search', authenticated, (req, res) => {
   const keyword = req.query.keyword
-  RestaurantInfo.find({ name: new RegExp(keyword, 'i') }, (err, restaurantinfos) => {
+  RestaurantInfo.find({ name: new RegExp(keyword, 'i'), userId: req.user._id }, (err, restaurantinfos) => {
     if (err) return console.error(err)
     res.render('index', { restaurantinfos, keyword })
   })
