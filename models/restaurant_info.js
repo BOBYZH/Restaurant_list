@@ -1,11 +1,8 @@
 const mongoose = require('mongoose')
+const validator = require('validator')
 const Schema = mongoose.Schema
 
 const restaurantInfoSchema = new Schema({
-//  id: {
-//    type: Number,
-//    required: true
-//  },
   name: {
     type: String,
     required: true
@@ -20,7 +17,12 @@ const restaurantInfoSchema = new Schema({
   },
   image: {
     type: String,
-    required: true
+    required: true,
+    validate:{
+      validator: validator.isURL,
+      message: '{VALUE} is not a valid URL',
+      isAsync: false
+    }
   },
   location: {
     type: String,
@@ -28,15 +30,33 @@ const restaurantInfoSchema = new Schema({
   },
   phone: {
     type: String,
-    required: true
+    required: true,
+    validate:{
+      validator: validator.isMobilePhone,
+      message: '{VALUE} is not a valid phone number',
+      isAsync: false
+    }
   },
   google_map: {
     type: String,
-    required: true
+    required: true,
+    validate:{
+      validator: validator.isURL,
+      message: '{VALUE} is not a valid URL',
+      isAsync: false
+    }
   },
   rating: {
     type: Number,
-    required: true
+    min: 0,
+    max: 5,
+    multipleOf: 0.1,
+    required: true,
+//    validate:{
+//      validator: validator.isFloat,
+//      message: '{VALUE} is not a valid float',
+//      isAsync: false
+//    }
   },
   description: {
     type: String,

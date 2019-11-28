@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const RestaurantInfo = require('../models/restaurant_info')
 
+const { authenticated } = require('../config/auth')
+
 // router.get('/ascending', (req, res) => {
 //  RestaurantInfo.find({})
 //    .sort({ name: 'asc' })
@@ -38,10 +40,10 @@ const RestaurantInfo = require('../models/restaurant_info')
 //    })
 // })
 //
-router.get('/name', (req, res) => {
+router.get('/name', authenticated, (req, res) => {
   const order = req.query.order
   const sortObject = { name: order }
-  RestaurantInfo.find({})
+  RestaurantInfo.find({ userId: req.user._id })
     .sort(sortObject)
     .exec((err, restaurantinfos) => {
       if (err) return res.sendStatus(500)
@@ -49,10 +51,10 @@ router.get('/name', (req, res) => {
     })
 })
 
-router.get('/category', (req, res) => {
+router.get('/category', authenticated, (req, res) => {
   const order = req.query.order
   const sortObject = { category: order }
-  RestaurantInfo.find()
+  RestaurantInfo.find({ userId: req.user._id })
     .sort(sortObject)
     .exec((err, restaurantinfos) => {
       if (err) return res.sendStatus(500)
@@ -60,10 +62,10 @@ router.get('/category', (req, res) => {
     })
 })
 
-router.get('/location', (req, res) => {
+router.get('/location', authenticated, (req, res) => {
   const order = (req.query.order).toString()
   const sortObject = { location: order }
-  RestaurantInfo.find()
+  RestaurantInfo.find({ userId: req.user._id })
     .sort(sortObject)
     .exec((err, restaurantinfos) => {
       if (err) return res.sendStatus(500)
