@@ -10,7 +10,7 @@
 3. 使用終端機(terminal)，將目錄切換至專案資料夾(restaurant_list)
 4. 使用npm安裝需要的套件：
 ```
-npm i express express-handlebars mongoose method-override
+npm i express express-handlebars mongoose method-override validator
 npm i express-session passport bcryptjs dotenv connect-flash passport-local passport-facebook
 ```
 5. 切換至"./models/seeds"，執行"node seeder.js"，建立資料庫與範例資料，以下為測試用的「正確」使用者名稱與對應的帳密：
