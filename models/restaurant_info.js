@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const Schema = mongoose.Schema
 
+let options = [{ no_symbols: false }]
+
 const restaurantInfoSchema = new Schema({
   name: {
     type: String,
@@ -18,7 +20,7 @@ const restaurantInfoSchema = new Schema({
   image: {
     type: String,
     required: true,
-    validate:{
+    validate: {
       validator: validator.isURL,
       message: '{VALUE} is not a valid URL',
       isAsync: false
@@ -31,8 +33,10 @@ const restaurantInfoSchema = new Schema({
   phone: {
     type: String,
     required: true,
-    validate:{
-      validator: validator.isMobilePhone,
+    validate: {
+      validator: function (i) {
+        return /^[0-9\s]*$/.test(i);
+      },
       message: '{VALUE} is not a valid phone number',
       isAsync: false
     }
@@ -40,7 +44,7 @@ const restaurantInfoSchema = new Schema({
   google_map: {
     type: String,
     required: true,
-    validate:{
+    validate: {
       validator: validator.isURL,
       message: '{VALUE} is not a valid URL',
       isAsync: false
@@ -52,11 +56,6 @@ const restaurantInfoSchema = new Schema({
     max: 5,
     multipleOf: 0.1,
     required: true,
-//    validate:{
-//      validator: validator.isFloat,
-//      message: '{VALUE} is not a valid float',
-//      isAsync: false
-//    }
   },
   description: {
     type: String,

@@ -24,7 +24,7 @@ db.once('open', () => {
           password: hash
         })
         newUser.save().then(user => {
-          // create restaurantLlist data for each user
+          // create restaurantlist data for each user
           for (let j = 0 + i * 3; j < (i + 1) * 3; j++) {
             RestaurantInfo.create({
               name: restaurantList[j].name,

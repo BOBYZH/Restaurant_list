@@ -9,7 +9,8 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    validate:{
+    unique: true,
+    validate: {
       validator: validator.isEmail,
       message: '{VALUE} is not a valid email',
       isAsync: false
