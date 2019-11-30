@@ -11,7 +11,7 @@ const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')
 
-mongoose.connect('mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 const db = mongoose.connection
 
@@ -62,6 +62,6 @@ app.use('/auth', require('./routes/auths'))
 
 app.use(express.static('public'))
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Express app is listening!')
 })

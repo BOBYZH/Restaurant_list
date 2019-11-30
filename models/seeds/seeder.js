@@ -5,7 +5,7 @@ const User = require('../user.js')
 const users = require('./user.json').users
 const bcrypt = require('bcryptjs')
 
-mongoose.connect('mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect((process.env.MONGODB_URI || 'mongodb://localhost/restaurantInfo', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 const db = mongoose.connection // the default name of collection is "restaurantinfos"
 
 db.on('error', () => {
