@@ -18,7 +18,7 @@
     </div>
     
     <div class="col-md-6 col-sm-12 mt-2" >
-      <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
+      <!-- <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
         <option selected>排列順序(依左至右)</option>
         <option value="/sort/name?order=asc">依店名字母順序/筆畫遞增</option>
         <option value="/sort/name?order=desc">依店名字母順序/筆畫遞減</option>
@@ -26,16 +26,21 @@
         <option value="/sort/category?order=desc">依類別字母順序/筆畫遞減</option>
         <option value="/sort/location?order=asc">依地區字母順序/筆畫遞增</option>
         <option value="/sort/location?order=desc">依地區字母順序/筆畫遞減</option>
-      </select>
+      </select> -->
+      <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
+        <option selected>排列順序(依左至右)</option>
+        <option value="/sort?order=asc&filter=name">依店名字母順序/筆畫遞增</option>
+        <option value="/sort?order=desc&filter=name">依店名字母順序/筆畫遞減</option>
+        <option value="/sort?order=asc&filter=category">依類別字母順序/筆畫遞增</option>
+        <option value="/sort?order=desc&filter=category">依類別字母順序/筆畫遞減</option>
+        <option value="/sort?order=asc&filter=location">依地區字母順序/筆畫遞增</option>
+        <option value="/sort?order=desc&filter=location">依地區字母順序/筆畫遞減</option>
+      </select
       <!-- <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
-        <!-- <option selected>排列順序(依左至右)</option>-->
-        <!-- <option value="/sort?order=asc&filter=name">依店名字母順序/筆畫遞增</option>-->
-        <!-- <option value="/sort?order=desc&filter=name">依店名字母順序/筆畫遞減</option>-->
-        <!-- <option value="/sort?order=asc&filter=category">依類別字母順序/筆畫遞增</option>-->
-        <!-- <option value="/sort?order=desc&filter=category">依類別字母順序/筆畫遞減</option>-->
-        <!-- <option value="/sort?order=asc&filter=location">依地區字母順序/筆畫遞增</option>-->
-        <!-- <option value="/sort?order=desc&filter=location">依地區字母順序/筆畫遞減</option>-->
-      <!-- </select>-->
+      {{#each sortTypes}}
+        <option value="/?sortType={{@key}}">{{this.display}}</option>
+      {{/each}}
+      </select>
       <div class="mt-5">
         <a href="/restaurants/" class="btn btn-primary rounded p-2 col-6">回到預設排序畫面</a>
         <a href="/restaurants/new" class="btn btn-success rounded p-2 float-right col-5">新增店家</a>
