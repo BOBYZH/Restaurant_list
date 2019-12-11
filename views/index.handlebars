@@ -1,7 +1,7 @@
 <div class="container mt-3">
 
-  <div class="container search-bar row justify-content-between" id="search-bar">   
-    
+  <div class="container search-bar row justify-content-between" id="search-bar">
+
     <div class="search-bar-outer col-md-5 col-sm-12 mt-1 mb-1">
       <div class="search-bar-inner">
         <form action="/search">
@@ -16,18 +16,9 @@
         </form>
       </div>
     </div>
-    
-    <div class="col-md-6 col-sm-12 mt-2" >
-      <!-- <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
-        <option selected>排列順序(依左至右)</option>
-        <option value="/sort/name?order=asc">依店名字母順序/筆畫遞增</option>
-        <option value="/sort/name?order=desc">依店名字母順序/筆畫遞減</option>
-        <option value="/sort/category?order=asc">依類別字母順序/筆畫遞增</option>
-        <option value="/sort/category?order=desc">依類別字母順序/筆畫遞減</option>
-        <option value="/sort/location?order=asc">依地區字母順序/筆畫遞增</option>
-        <option value="/sort/location?order=desc">依地區字母順序/筆畫遞減</option>
-      </select> -->
-      <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
+
+    <div class="col-md-6 col-sm-12 mt-2">
+      {{!-- <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
         <option selected>排列順序(依左至右)</option>
         <option value="/sort?order=asc&filter=name">依店名字母順序/筆畫遞增</option>
         <option value="/sort?order=desc&filter=name">依店名字母順序/筆畫遞減</option>
@@ -35,22 +26,24 @@
         <option value="/sort?order=desc&filter=category">依類別字母順序/筆畫遞減</option>
         <option value="/sort?order=asc&filter=location">依地區字母順序/筆畫遞增</option>
         <option value="/sort?order=desc&filter=location">依地區字母順序/筆畫遞減</option>
-      </select
-      <!-- <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
-      {{#each sortTypes}}
+      </select> --}}
+
+      <select class="form-control w-100 float-right" onchange="window.location.href=this.value;">
+        <option selected value disabled>排列順序(依左至右)</option>
+        {{#each sortTypes}}
         <option value="/?sortType={{@key}}">{{this.display}}</option>
-      {{/each}}
+        {{/each}}
       </select>
       <div class="mt-5">
-        <a href="/restaurants/" class="btn btn-primary rounded p-2 col-6">回到預設排序畫面</a>
+        <a href="/restaurants/" class="btn btn-primary rounded p-2 col-6">回到預設排序</a>
         <a href="/restaurants/new" class="btn btn-success rounded p-2 float-right col-5">新增店家</a>
-      </div> 
+      </div>
     </div>
-    
-   
-    
-  </div>  
- 
+
+
+
+  </div>
+
   <!-- restaurant list -->
   <div class="container mt-2">
     <div class="row" id="data-panel">
@@ -78,7 +71,8 @@
                 <a href="/restaurants/{{{this.id}}}/edit" class="btn border">編輯</a>
                 <a href="/restaurants/{{{this.id}}}" class="btn btn-info border">檢視</a>
                 <form action="/restaurants/{{{this.id}}}/delete?_method=DELETE" method="POST" style="display: inline;">
-                  <button type="submit" class="border btn btn-danger" onclick="if(confirm('確定刪除？')) return true; else return false">刪除</button>
+                  <button type="submit" class="border btn btn-danger"
+                    onclick="if(confirm('確定刪除？')) return true; else return false">刪除</button>
                 </form>
               </div>
             </div>
