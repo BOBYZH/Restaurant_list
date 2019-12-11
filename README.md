@@ -2,7 +2,7 @@
 
 ### ALPHA Camp 學期三作業
 (打造餐廳清單 => 建立餐廳清單的 CRUD => 重構餐廳清單 => 完成餐廳清單)
-線上預覽：[https://restaurant-list-practice.herokuapp.com/users/login](https://restaurant-list-practice.herokuapp.com/users/login)
+- 線上預覽：[https://restaurant-list-practice.herokuapp.com/users/login](https://restaurant-list-practice.herokuapp.com/users/login)
 
 ## 如何使用：
 0. 至少先在電腦上裝好Node.js
