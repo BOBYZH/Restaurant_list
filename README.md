@@ -16,7 +16,8 @@ cd restaurant_list
 npm i express express-handlebars mongoose method-override validator
 npm i express-session passport bcryptjs dotenv connect-flash passport-local passport-facebook
 ```
-5. 切換至"./models/seeds"，執行"node seeder.js"，建立資料庫與範例資料，或使用以下指令：
+5. 切換至"./models/seeds"，執行"node seeder.js"，建立資料庫與範例資料，
+或使用以下指令：
 ```
 npm run seeder
 ```
