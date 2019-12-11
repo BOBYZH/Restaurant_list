@@ -5,8 +5,8 @@
 
 ## 如何使用：
 0. 至少先在電腦上裝好Node.js
-1. 從本專案頁面將檔案下載，或複製(clone)到要操作的電腦上
-2. 安裝mongoDB Community Edition[依作業系統版本對照說明操作](https://docs.mongodb.com/manual/administration/install-community/)
+1. 確定是否安裝mongoDB Community Edition[依作業系統版本對照說明操作](https://docs.mongodb.com/manual/administration/install-community/)
+2. 從本專案頁面將檔案下載，或複製(clone)到要操作的電腦上
 3. 使用終端機(terminal)，將目錄切換至專案資料夾：
 ```
 cd restaurant_list
@@ -16,7 +16,7 @@ cd restaurant_list
 npm i express express-handlebars mongoose method-override validator
 npm i express-session passport bcryptjs dotenv connect-flash passport-local passport-facebook
 ```
-5. 切換至"./models/seeds"，執行"node seeder.js"，或使用以下指令，建立資料庫與範例資料：
+5. 切換至"./models/seeds"，執行"node seeder.js"，建立資料庫與範例資料，或使用以下指令：
 ```
 npm run seeder
 ```
@@ -26,7 +26,13 @@ npm run seeder
 | ------| -------------------| ---------| --------------------|
 | user1 | user1@example.com  | 12345678 | id #1, #2, #3 號餐廳 |
 | user2 | user2@example.com  | 12345678 | id #4, #5, #6 號餐廳 |
-6. 到[Facebook for Developers](https://developers.facebook.com/)建立應用程式，在本專案根目錄依據".env.template"內容格式，新增".env"檔案，並填入Facebook應用程式編號、應用程式密鑰
+6. 到[Facebook for Developers](https://developers.facebook.com/)建立應用程式，
+在本專案根目錄依據".env.template"內容格式，新增".env"檔案，或使用指令：
+```
+cp .env.template .env
+```
+並填入Facebook應用程式編號、應用程式密鑰
+
 7. 執行本專案：
 ```
 npm run dev
