@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const Schema = mongoose.Schema
 
-let options = [{ no_symbols: false }]
+const options = [{ no_symbols: false }]
 
 const restaurantInfoSchema = new Schema({
   name: {
@@ -35,7 +35,7 @@ const restaurantInfoSchema = new Schema({
     required: true,
     validate: {
       validator: function (i) {
-        return /^[0-9\s]*$/.test(i);
+        return /^[0-9\s]*$/.test(i)
       },
       message: '{VALUE} is not a valid phone number',
       isAsync: false
@@ -55,7 +55,7 @@ const restaurantInfoSchema = new Schema({
     min: 0,
     max: 5,
     multipleOf: 0.1,
-    required: true,
+    required: true
   },
   description: {
     type: String,
