@@ -7,13 +7,20 @@
 0. 至少先在電腦上裝好Node.js
 1. 從本專案頁面將檔案下載，或複製(clone)到要操作的電腦上
 2. 安裝mongoDB Community Edition[依作業系統版本對照說明操作](https://docs.mongodb.com/manual/administration/install-community/)
-3. 使用終端機(terminal)，將目錄切換至專案資料夾(restaurant_list)
+3. 使用終端機(terminal)，將目錄切換至專案資料夾：
+```
+cd restaurant_list
+```
 4. 使用npm安裝需要的套件：
 ```
 npm i express express-handlebars mongoose method-override validator
 npm i express-session passport bcryptjs dotenv connect-flash passport-local passport-facebook
 ```
-5. 切換至"./models/seeds"，執行"node seeder.js"，建立資料庫與範例資料，以下為測試用的「正確」使用者名稱與對應的帳密：
+5. 切換至"./models/seeds"，執行"node seeder.js"，或使用以下指令，建立資料庫與範例資料：
+```
+npm run seeder
+```
+以下為測試用的「正確」使用者名稱與對應的帳密：
 
 |(name) | email              | password | (登入後可見資料)     |
 | ------| -------------------| ---------| --------------------|
